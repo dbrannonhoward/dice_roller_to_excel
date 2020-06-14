@@ -1,3 +1,4 @@
+from dice_rolls import *
 from openpyxl import Workbook
 import string
 
@@ -48,7 +49,21 @@ def generate_qty_of_row_names(qty = 1000):
     return list_of_rows[active_row_index - 1]
 
 
+def save_workbook(filename='dice_rolls.xlsx'):
+    wb.save(filename)
+
+
+def write_value_to_cell(_value, cell):
+    worksheet[cell] = _value
+
+
 def main():
+    active_column = 'A'
+    xl_rows = generate_qty_of_row_names()
+    for row in xl_rows:
+        active_cell = str(active_column) + str(row)
+        write_value_to_cell(roll_n_dice(1, 6, 2), active_cell)
+    save_workbook('dice_rolls.xlsx')
     pass
 
 
