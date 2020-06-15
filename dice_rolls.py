@@ -2,10 +2,7 @@ import random
 import time
 
 def get_list_average(list_of_results):
-    list_sum = 0
-    for result in list_of_results:
-        list_sum += result
-    average = list_sum / len(list_of_results)
+    average = get_list_sum(list_of_results) / len(list_of_results)
     return average
 
 
